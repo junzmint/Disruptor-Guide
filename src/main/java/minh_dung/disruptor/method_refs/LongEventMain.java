@@ -1,14 +1,14 @@
-package minh_dung.disruptor;
+package minh_dung.disruptor.method_refs;
 
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 // import com.lmax.disruptor.examples.longevent.LongEvent;
-import minh_dung.disruptor.LongEvent;
+import minh_dung.disruptor.event.LongEvent;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 
 import java.nio.ByteBuffer;
 
-public class LongEventMainUsingMethodRefs
+public class LongEventMain
 {
     public static void handleEvent(LongEvent event, long sequence, boolean endOfBatch)
     {
@@ -26,7 +26,7 @@ public class LongEventMainUsingMethodRefs
 
         Disruptor<LongEvent> disruptor =
                 new Disruptor<>(LongEvent::new, bufferSize, DaemonThreadFactory.INSTANCE);
-        disruptor.handleEventsWith(LongEventMainUsingMethodRefs::handleEvent);
+        disruptor.handleEventsWith(LongEventMain::handleEvent);
         disruptor.start();
 
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
@@ -34,7 +34,7 @@ public class LongEventMainUsingMethodRefs
         for (long l = 0; true; l++)
         {
             bb.putLong(0, l);
-            ringBuffer.publishEvent(LongEventMainUsingMethodRefs::translate, bb);
+            ringBuffer.publishEvent(LongEventMain::translate, bb);
             Thread.sleep(1000);
         }
     }

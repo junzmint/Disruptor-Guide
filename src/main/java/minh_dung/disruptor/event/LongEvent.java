@@ -1,4 +1,4 @@
-package minh_dung.disruptor;
+package minh_dung.disruptor.event;
 
 
 // Firstly we will define the Event that will carry the data and is common to all following examples

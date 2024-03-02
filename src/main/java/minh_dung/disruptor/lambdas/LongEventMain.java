@@ -1,13 +1,13 @@
-package minh_dung.disruptor;
+package minh_dung.disruptor.lambdas;
 
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.RingBuffer;
 // import com.lmax.disruptor.examples.longevent.LongEvent;
-import minh_dung.disruptor.LongEvent;
+import minh_dung.disruptor.event.LongEvent;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 import java.nio.ByteBuffer;
 
-public class LongEventMainUsingLambdas
+public class LongEventMain
 {
     public static void main(String[] args) throws Exception
     {

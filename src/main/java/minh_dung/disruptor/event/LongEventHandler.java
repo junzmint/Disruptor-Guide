@@ -1,4 +1,4 @@
-package minh_dung.disruptor;
+package minh_dung.disruptor.event;
 
 import com.lmax.disruptor.EventHandler;
 
